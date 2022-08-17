@@ -1,0 +1,38 @@
+.offercard{
+    display: flex;
+    align-items: center;
+    // background: rgb(134, 14, 233);
+    border-radius: 15px;
+    height: 160px;
+    position: relative;
+    &_left{
+        flex: 1;
+        color: #fff;
+        padding: 15px;
+        &-discount{
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        &-title{
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-weight:500;
+        }
+        &-desc{
+            font-size: 12px;
+            color: #ddd;
+            // margin-bottom: 10px;
+        }
+        
+    }
+    &_right{
+        flex: 1;
+        &-photo{
+        //    padding: 10px;
+            img{
+                width: 130px;
+                object-fit: cover;
+            }
+        }
+    }
+}

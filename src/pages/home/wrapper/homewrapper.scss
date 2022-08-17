@@ -1,0 +1,11 @@
+@import '../../../styles/variable';
+.homewrapper{
+    &_top{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        &-btn{
+            color: $blue-tx;
+        }
+    }
+}

@@ -1,0 +1,108 @@
+@import "../../styles/variable";
+@keyframes splash {
+    0%{
+        font-size: 20px;
+        color: $yellow;
+        margin: 30px;
+    }
+    50%{
+        font-size: 20px;
+        color: $green;
+    }
+    78%{
+        font-size: 70px;
+        color: $red; 
+        letter-spacing: 12px;
+        // text-rendering: optimizeSpeed;
+    }
+    100%{
+        font-size: 70px;
+        // color: $red;
+        letter-spacing: 12px;
+        text-shadow: 1px 1px $transparentBG;
+        text-shadow: 2px 2px $transparentBG;
+        text-shadow: 3px 3px $transparentBG;
+        text-shadow: 4px 4px $transparentBG;
+        text-shadow: 5px 5px $transparentBG;
+        text-shadow: 6px 6px 6px  $transparentBG;
+        
+    }
+}
+@keyframes splashText {
+    0%{
+        color: $red;
+       
+    }
+    10%{
+        color: $green;
+       
+    }
+    20%{
+        color: $blue-tx;
+       
+    }
+    30%{
+        color: $primary;
+       
+    }
+    40%{
+        
+       transform: scale(1.2);
+       padding-right: 5px;
+    }
+    50%{
+        transform: rotate(90deg);
+       
+    }
+    70%{
+        transform: rotate(360deg);
+       
+    }
+
+    100%{
+        // font-size: 70px;
+        // color: $red;
+        // letter-spacing: 12px;
+        font-size: 70px;
+        // color: $red;
+        letter-spacing: 12px;
+        text-shadow: 1px 1px $transparentBG;
+        text-shadow: 2px 2px $transparentBG;
+        text-shadow: 3px 3px $transparentBG;
+        text-shadow: 4px 4px $transparentBG;
+        text-shadow: 5px 5px 5px$transparentBG;
+        text-shadow: 6px 6px 6px $transparentBG;
+    }
+}
+.splash{
+    width: 100%;
+    background: rgba(0, 0, 0, 0.137);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-text{
+        color: $primary;
+        font-size: 70px;
+        font-weight: 700;
+        // font-style: oblique;
+        // letter-spacing: 12px;
+        // animation: splash 1s forwards ;
+        animation: splash 1.5s  forwards ;
+        &:nth-child(2){
+            color: $yellow;
+            animation: splashText 1s forwards ;
+            
+        }
+        &:nth-child(3){
+            color: $green;
+            // animation: splashText 1.52s forwards infinite;
+            animation: splash 1s forwards ;
+        }
+        &:nth-child(4){
+            color: $red;
+            // animation: splashText 1.3s forwards infinite;
+            animation: splash 2s forwards ;
+        }
+    }
+}

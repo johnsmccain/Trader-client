@@ -1,0 +1,41 @@
+@import '../../styles/variable';
+.trader_card{
+    // display: flex;
+    background: rgb(255, 255, 255);
+    // justify-content: space-between;
+    margin: 20px 10px;
+    border-radius: 10px;
+    position: relative;
+    &-details{
+        padding: 10px;
+        display: flex;
+        img{
+            width: 110px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        &-desc{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            &-name{
+                font-size: 12px;
+            }
+            &-price{
+                color: $mainColor;
+            }
+            &-rate{
+                font-size: 12px;
+                svg{
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    &-icons{
+        padding: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

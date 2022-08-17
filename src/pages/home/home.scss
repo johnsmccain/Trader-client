@@ -1,0 +1,89 @@
+@import "../../styles/variable";
+.home{
+    padding: 0px;
+    &-profile{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        &_detail{
+            display: flex;
+            align-items: center;
+            img{
+                width: 40px;
+                border-radius: 50%;
+            }
+            &-desc{
+                padding-left: 10px;
+                span{
+                    font-weight: lighter;
+
+                }
+            }
+
+        }
+        &-notification{
+            // background: #000;
+            svg{
+                margin-left: 15px;
+            }
+        }
+    }
+    &-search{
+        padding: 10px 20px;
+        
+    }
+    &-services-list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        &-item{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            width: 50px;
+            height: 50px;
+            margin:15px ;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.199);
+            color: red;
+            span{
+                background: rgb(255, 4, 4);
+                width: 20px;
+                height: 5px;
+
+            }
+        }
+    }
+    &_service-option{
+        // background: #000;
+        overflow-x: scroll;
+        ul{
+            display: flex;
+            li{
+                padding: 9px;
+                margin: 5px;
+                border: 1px solid $mainColor;
+                border-radius: 10px;
+                &:hover{
+                    background: $mainColor;
+                    color: aliceblue;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+.home-offers{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: auto;
+    // margin: 20px 0;
+    
+    &-item{
+        margin: 0 10px 10px 10px;
+        min-width: 320px;
+    }
+}

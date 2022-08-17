@@ -1,0 +1,27 @@
+@import '../../styles/variable';
+.input{
+    margin: 12px 0;
+    width: 100%;
+    border-radius: 5px;
+    background: $inputbg;
+    &-control{
+        width: 90%;
+        padding: 15px;
+        border: none;
+        outline: none;
+        background:$inputbg;
+    }
+    &-label{
+        display: flex;
+        // background: #000;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        margin: 20px;
+        input{
+            margin-right: 10px;
+            
+        }
+        
+    }
+}

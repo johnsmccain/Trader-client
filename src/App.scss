@@ -1,6 +1,9 @@
 @import './styles/_mixin.scss';
 .App{
-  
+  margin: auto;
+  max-width: 350px;
+  // border-radius: 20px;
+  border: 2px dotted green;
   @include mobile{
     max-width: 400px;
     width: 100%;

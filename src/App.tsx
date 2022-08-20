@@ -5,7 +5,9 @@ import './App.scss';
 import { Splashx } from './components';
 import Wrapper from './components/wrapper/Wrapper';
 import {Home, SocialAuth, SignUp, ProfileForm, Offers, Services} from './pages';
+import ServiceList from './pages/serviceList/ServiceList';
 import SignIn from './pages/signIn/SignIn';
+import Workers from './pages/workers/Workers';
 
 
 function App() {
@@ -36,6 +38,11 @@ const ifFirstTime = true;
           <Route path='/auth/signup' element={<SignUp/>}/>
           <Route path='/auth/signin' element={<SignIn/>}/>
           <Route path='/services' element={<Wrapper header="Sevices"><Services/></Wrapper>}/>
+          <Route path='/services/:id' element={<Wrapper header="Sevices"><Workers/></Wrapper>}/>
+          <Route path='/:id' element={<Wrapper header="Sevices"><Workers/></Wrapper>}/>
+          <Route path='/workers' element={<Wrapper header="Sevices"><Workers/></Wrapper>}/>
+          {/* <Route path='/:id' element={<Wrapper header="Sevices"><ServiceList/></Wrapper>}/> */}
+          {/* <Route path='/services/:id' element={<Wrapper header="Sevices"><ServiceList/></Wrapper>}/> */}
         </Routes>}
         
         {/*  */}

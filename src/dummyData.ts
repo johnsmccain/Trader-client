@@ -5,6 +5,7 @@ import pic1 from './assets/pic1.png'
 import pic2 from './assets/pic2.png'
 import pic3 from './assets/pic3.png'
 import pic4 from './assets/pic4.png'
+import { faAirFreshener, faBrush, faBuilding, faCar, faFaceSmile, faHandsWash, faHatCowboySide, faHeader, faPaintRoller, faPersonArrowDownToLine, faPlug, faRadio, faTools, faTowerBroadcast, faTruck, faWater } from '@fortawesome/free-solid-svg-icons';
 export const intro = [
     {
         id:0,
@@ -111,58 +112,94 @@ export const service_cat = [
 export const service_cat2 = [
   {
     id:1,
-    title: "All",
-    bg: "#4b13a5"
+    title: "Cleaning",
+    icon: faBrush, 
+    bg: "#4b13a5",
+    link: "cleaning"
   },
   {
     id:2,
-    title: "Cleaning",
-    bg: "#94057c"
+    title: "Repairing",
+    icon: faTools, 
+    bg: "#94057c",
+    link: "repairing"
   },
   {
     id:3,
-    title: "Laundry",
-    bg: "#c9960b"
+    title: "Painting",
+    icon: faPaintRoller, 
+    bg: "#c9960b",
+    link: "painting"
   },
   {
     id:4,
-    title: "Appliances",
-    bg: "#009eb3"
+    title: "Laundry",
+    icon: faWater, 
+    bg: "#009eb3",
+    link: "laundry"
   },
   {
     id:5,
-    title: "Shifting",
-    bg: "#4b13a5"
+    title: "Appliance",
+    icon: faTowerBroadcast, 
+    bg: "#4b13a5",
+    link: "appliance"
   },
   {
     id:6,
-    title: "Appliances",
-    bg: "#c9960b"
+    title: "Plumbing",
+    icon: faTools, 
+    bg: "#c9960b",
+    link: "plumbing"
   },
 
   {
     id:7,
-    title: "Cleaning",
-    bg: "#94057c"
+    title: "Shifting",
+    icon: faTruck, 
+    bg: "#94057c",
+    link: "shifting"
   },
   {
     id:8,
-    title: "Laundry",
-    bg: "#c9960b"
+    title: "Beauty",
+    icon: faFaceSmile, 
+    bg: "#c9960b",
+    link: "beauty"
   },
   {
     id:9,
-    title: "Appliances",
-    bg: "#009eb3"
+    title: "AC Repairing",
+    icon: faAirFreshener, 
+    bg: "#009eb3",
+    link: "ac"
   },
   {
     id:10,
-    title: "Shifting",
-    bg: "#4b13a5"
+    title: "Vehicle",
+    icon: faCar, 
+    bg: "#4b13a5",
+    link: "vehicle"
   },
   {
     id:11,
-    title: "Appliances",
-    bg: "#c9960b"
+    title: "Elecrtonics",
+    icon: faRadio, 
+    bg: "#c9960b",
+    link: "electronics"
+  },
+  {
+    id:12,
+    title: "Massage",
+    icon: faPersonArrowDownToLine, 
+    bg: "#4b13a5",
+    link: "massage"
+  },
+  {
+    id:13,
+    title: "Men's Salon",
+    bg: "#c9960b",
+    icon: faHatCowboySide,
+    link: "salon"
   },
 ]

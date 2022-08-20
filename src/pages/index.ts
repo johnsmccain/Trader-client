@@ -4,5 +4,5 @@ export {default as SocialAuth} from "./socialAuth/SocialAuth"
 export {default as SignIn} from "./signIn/SignIn"
 export {default as ProfileForm} from "./profileForm/ProfileForm"
 export {default as Offers} from "./offers/Offers"
-export {default as Services} from "./services/Sevices"
+export {default as Services} from "./service-cat_list/SeviceCatList"
 

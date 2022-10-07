@@ -67,7 +67,9 @@ export const service_card_data = [
     service: "House Cleaning",
     price: 25,
     rating: 4.0,
-    views: 8289
+    views: 8289,
+    address: "255 Grand Paris Avenue: New York",
+    book: false
   },
   {
     id: 2,
@@ -76,7 +78,9 @@ export const service_card_data = [
     service: "Floor Cleaning",
     price: 20,
     rating: 4.9,
-    views: 6143
+    views: 6143,
+    address: "255 Grand Paris Avenue: New York",
+    book: false
   },
   {
     id: 3,
@@ -85,7 +89,9 @@ export const service_card_data = [
     service: "Washing Clothes",
     price: 22,
     rating: 4.7,
-    views: 7918
+    views: 7918,
+    address: "255 Grand Paris Avenue: New York",
+    book: false
   },
   {
     id: 4,
@@ -94,7 +100,62 @@ export const service_card_data = [
     service: "Bathroom Cleaning",
     price: 24,
     rating: 4.9,
-    views: 6543
+    views: 6543,
+    address: "255 Grand Paris Avenue: New York",
+    book: true
+  },
+]
+export const profile_data = [
+  {
+    id: 1,
+    photo: [pic1, pic2, pic3, pic4],
+    name: "Kylee Danford",
+    service: "House Cleaning",
+    price: 25,
+    rating: 4.0,
+    views: 8289,
+    address: "255 Grand Paris Avenue: New York",
+    book: false,
+    gallery: [pic1, pic2, pic3, pic4]
+  },
+  {
+    id: 2,
+
+    name: "JArron Swagger",
+    service: "Floor Cleaning",
+    price: 20,
+    rating: 4.9,
+    views: 6143,
+    address: "255 Grand Paris Avenue: New York",
+    book: false,
+    photo: [pic2, pic4, pic1, pic3],
+    gallery: [pic1, pic2, pic3, pic4]
+  },
+  {
+    id: 3,
+ 
+    name: "Sarah Dons",
+    service: "Washing Clothes",
+    price: 22,
+    rating: 4.7,
+    views: 7918,
+    address: "255 Grand Paris Avenue: New York",
+    book: false,
+    photo: [pic3, pic4, pic1, pic2],
+    gallery: [pic1, pic2, pic3, pic4]
+  },
+  {
+    id: 4,
+
+    name: "Freda Vames",
+    service: "Bathroom Cleaning",
+    price: 24,
+    rating: 4.9,
+    views: 6543,
+    address: "255 Grand Paris Avenue: New York",
+    book: true,
+    photo: [pic4, pic2, pic3, pic1],
+    gallery: [pic1, pic2, pic3, pic4]
   },
 ]
 

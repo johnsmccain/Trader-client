@@ -2,12 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import  './input.scss';
 const INPUT = (props:any) => {
     // const [value, setValue] = useState(false)
+    const [focused, setFocused] = useState(false);
     
-   
+   const handleFocus = (e:any) => {
+        setFocused(true);
+   }
     
     return (
         <div className='input'>
-            <span  className='input-startIcon'>{props?.startIcon}</span>
+            <label  className='input-startIcon'>{props?.startIcon}</label>
             {
 
             props.type !== "checkbox" && 
@@ -18,6 +21,9 @@ const INPUT = (props:any) => {
                 placeholder={props.placeholder}
                 onChange={(e:any) => props.handleChange( e.target)}
                 name={props?.name}
+                onFocus={()=>{
+                    
+                }}
                 // id={props.label}
             />
         }

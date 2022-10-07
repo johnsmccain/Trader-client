@@ -36,9 +36,11 @@
         }
     }
     &-icons{
-        padding: 20px;
+        margin: 20px;
         position: absolute;
         top: 0;
         right: 0;
+        cursor: pointer;
+        // background: #000;
     }
 }

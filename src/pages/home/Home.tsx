@@ -5,7 +5,7 @@ import './home.scss';
 import { Badge } from '@mui/material';
 import { BsAlarm, BsBookmark, BsSearch } from 'react-icons/bs';
 import HomeWrapper from './wrapper/HomeWrapper';
-import { offer_data, service_card_data, service_cat, service_cat2 } from '../../dummyData';
+import { offer_data, profile_data, service_card_data, service_cat, service_cat2 } from '../../dummyData';
 import {faBroom, faBrush, faBuilding, faHandsWash, faPaintRoller, faPlug, faTools, faTruck} from "@fortawesome/free-solid-svg-icons"
 import { Link } from 'react-router-dom';
 
@@ -47,14 +47,14 @@ const Home = () => {
           <HomeWrapper link='/offer' title='Special Offers'>
             <div  className='home-offers'>
               {
-                offer_data.map(x => <div className='home-offers-item' key={x.id}> <OfferCard discount={x.discount} title={x.title} desc={x.desc} photo={x.photo} color={x.bg} key={x.id}/> </div>)
+                offer_data.map((x, i) => <div className='home-offers-item' key={i}> <OfferCard discount={x.discount} title={x.title} desc={x.desc} photo={x.photo} color={x.bg} key={x.id}/> </div>)
               }
             </div>
           </HomeWrapper>
           <HomeWrapper link='/services' title='Services'>
             <ul className="home-services-list">
               {
-                service_cat2.slice(1,7).map((d, i) =><Link to={d.link}> <Services keys={d.id} name={d.title} icon={icons[i]} color={d.bg}/></Link>)
+                service_cat2.slice(1,7).map((d, i) =><Link to={d.link} key={i}> <Services  name={d.title} icon={icons[i]} color={d.bg}/></Link>)
               }
               <Link to="services" className='home-services-list-item'>
                 All<span></span>
@@ -63,7 +63,7 @@ const Home = () => {
             
             
           </HomeWrapper>
-          <HomeWrapper link='/workers' title='Most Popular Services'>
+          <HomeWrapper link='/service-detail' title='Most Popular Services'>
             <div className="home_service-option">
               <ul>
                 {
@@ -73,7 +73,7 @@ const Home = () => {
               </ul>
             </div>
             {
-              service_card_data.map(data => <Trader_card key={data.id} photo={data.photo} name={data.name} service={data.service} price={data.price} rating={data.rating} views={data.views} />)
+              profile_data.map(data => <Trader_card key={data.id} photo={data.photo[data.id -1]} id={data.id} name={data.name} service={data.service} price={data.price} rating={data.rating} views={data.views} />)
               
             }
           </HomeWrapper>

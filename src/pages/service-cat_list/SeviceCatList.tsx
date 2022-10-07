@@ -15,9 +15,9 @@ const SeviceCatList = () => {
             (d, i) => (
               <Link 
                 to={d.link}
+                key={d.id} 
               >
                 <Services 
-                  keys={d.id} 
                   name={d.title} 
                   icon={d.icon} 
                   color={d.bg}

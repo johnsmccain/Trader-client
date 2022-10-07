@@ -3,8 +3,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.scss';
 import { Splashx } from './components';
+import FormInput from './components/form/FormInput';
 import Wrapper from './components/wrapper/Wrapper';
-import {Home, SocialAuth, SignUp, ProfileForm, Offers, Services} from './pages';
+import {Home, SocialAuth, SignUp, ProfileForm, Offers, Services, Notifications, Bookmark, Search} from './pages';
+import ServiceDetail from './pages/serviceDetails/ServiceDetail';
 import ServiceList from './pages/serviceList/ServiceList';
 import SignIn from './pages/signIn/SignIn';
 import Workers from './pages/workers/Workers';
@@ -35,17 +37,19 @@ const ifFirstTime = true;
           
           <Route path='/auth' element={<SocialAuth/>}/>
           <Route path='/auth/profileform' element={<ProfileForm/>}/>
-          <Route path='/auth/signup' element={<SignUp/>}/>
-          <Route path='/auth/signin' element={<SignIn/>}/>
-          <Route path='/services' element={<Wrapper header="Sevices"><Services/></Wrapper>}/>
-          <Route path='/services/:id' element={<Wrapper header="Sevices"><Workers/></Wrapper>}/>
-          <Route path='/:id' element={<Wrapper header="Sevices"><Workers/></Wrapper>}/>
-          <Route path='/workers' element={<Wrapper header="Sevices"><Workers/></Wrapper>}/>
-          {/* <Route path='/:id' element={<Wrapper header="Sevices"><ServiceList/></Wrapper>}/> */}
-          {/* <Route path='/services/:id' element={<Wrapper header="Sevices"><ServiceList/></Wrapper>}/> */}
+          <Route path='/auth/register' element={<SignUp/>}/>
+          <Route path='/auth/login' element={<SignIn/>}/>
+          <Route path='/services' element={<Wrapper header="Sevices" bg="bg"><Services/></Wrapper>}/>
+          <Route path='/services/:id' element={<Wrapper header="Sevices" bg="bg"><Workers/></Wrapper>}/>
+          <Route path='/:id' element={<Wrapper header="Sevices" bg="bg"><Workers/></Wrapper>}/>
+          <Route path='/service-detail' element={<Wrapper header="Sevices" bg="bg"><Workers/></Wrapper>}/>
+          <Route path='/service-detail/:id' element={<Wrapper ><ServiceDetail/></Wrapper>}/>
+          <Route path='/notifications' element={<Wrapper header="Notifications" bg='bg'><Notifications/></Wrapper>}/>
+          <Route path='/bookmark' element={<Wrapper header="My Bookmark" bg="bg"><Bookmark/></Wrapper>}/>
+          <Route path='/search' element={<Search/>}/>
+          <Route path='/log' element={<FormInput/>}/>
         </Routes>}
         
-        {/*  */}
         {/* <Wrapper >
           <SignUp/>
         </Wrapper> */}

@@ -1,0 +1,48 @@
+@import '../../../styles/variable';
+.info{
+
+    &-service{
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    &-wrapper{
+        
+        display: flex;
+        align-items: center;
+
+    &-name{
+        color: $mainColor;
+        font-size: 19px;
+        margin-bottom: 20px;
+    }
+    &-rating{
+        margin-left: 15px;
+        svg{
+            color: gold;
+            margin-right: 5px;
+        }
+    }
+    &-tag{
+        background: rgba(111, 22, 194, 0.144);
+        font-size: 13px;
+        margin-right: 7px;
+        padding: 7px;
+        border-radius: 5px;
+        color: $mainColor;
+    }
+    &-location{
+        font-size: 12px;
+    }
+    &-about{
+        margin: 20px 0;
+        &-title{
+            padding: 10px 0;
+        }
+    }
+    }
+    &-price{
+        color: $mainColor;
+        margin: 20px 0;
+        font-size: 30px;
+    }
+}

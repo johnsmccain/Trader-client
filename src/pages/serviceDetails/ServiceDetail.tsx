@@ -1,43 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { profile_data } from '../../dummyData';
+import { useParams } from 'react-router-dom'
 import './servicedetail.scss';
+import { URLSearchParams } from 'url';
+import { BsStarHalf } from 'react-icons/bs';
+import Slide from '../../components/service_detail/slide/Slide';
+import Info from '../../components/service_detail/info/Info';
+import Gallery from '../../components/service_detail/gallery/Gallery';
+import { Comments, Cta } from '../../components';
+
 const ServiceDetail = () => {
+    const params = useParams()
+    let id:any = params.id?.slice(1,)
+ 
+    const data = profile_data[id - 1];
+
   return (
     <div className='servicedetail'>
-        <div className="servicedetail-slide"></div>
+        <Slide photo={data.photo}/>
         <div className="servicedetail-desc">
-            <h2 className="servicedetail-desc-service">House Cleaning</h2>
-            <div className="servicedetail-desc-wrapper">
-                <h3 className="servicedetail-desc-wrapper-name">Jenny Wilson</h3>
-                <span className="servicedetail-desc-wrapper-rating">* 4.8(4,479 reviews)</span>
-            </div>
-            <div className="servicedetail-desc-wrapper">
-                <h3 className="servicedetail-desc-wrapper-tag">Cleaning</h3>
-                <span className="servicedetail-desc-wrapper-location">255 Grand Park Avenue, New York</span>
-            </div>
-            <h2 className="servicedetail-desc-price">$20</h2>
-
-            <hr className="servicedetail-desc-line" />
-
-            <div className="servicedetail-desc-wrapper-about">
-                <h3 className="servicedetail-desc-wrapper-about-title">About me</h3>
-                <p className="servicedetail-desc-wrapper-about-text">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt, necessitatibus.
-
-                </p>
-            </div>
-            <div className="servicedetail-desc-wrapper-gallery">
-                <h3 className="servicedetail-desc-wrapper-gallery-title">Photo & Videos</h3>
-                <div className="servicedetail-desc-wrapper-gallery-media">
-                    <img src='' alt="" />
-                </div>
-            </div>
+            <Info data={data}/>
+            <Gallery gallery={data.gallery}/>
             <div className="servicedetail-desc-wrapper-comments">
                 
-                <ul>
-                    <li></li>
-                </ul>
+               <Comments/>
             </div>
             <div className="servicedetail-desc-icon"></div>
+        </div>
+        <div className="footer">
+          <Cta left="Message" right="Book Now"/>
         </div>
     </div>
   )

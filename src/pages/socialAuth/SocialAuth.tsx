@@ -26,14 +26,10 @@ const SocialAuth = () => {
           <a href=""><BsFacebook/>Continue with Facebook</a>
           <a href=""><BsGoogle/>Continue with Google</a>
           <span>or</span>
-      
-        
-        
-      
 
-          <Btn  color='primary' variant='contained' width='100' text='SignIn with pasword' linktopassword="signin"/>
+          <Btn  color='primary' variant='contained' width='100' text='SignIn with pasword' linktopassword="login"/>
           <p >
-            Don't have an account? <Link to='signup'>Sign up</Link >
+            Don't have an account? <Link to='register'>Sign up</Link >
           </p>
         </div>
 

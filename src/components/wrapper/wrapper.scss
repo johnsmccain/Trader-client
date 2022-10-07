@@ -1,10 +1,10 @@
+@import '../../styles/variable';
 .wrapper{
     position: relative;
     &-arrow{
         // position: absolute;
         height: 70px;
         position:sticky;
-        background: rgb(207, 196, 196);
         width: 100%;
         display: flex;
         align-items: center;
@@ -16,8 +16,9 @@
         svg{
             font-size: 30px;
             margin-right:16px;
+            color: aliceblue;
             &:hover{
-                color: aqua;
+                color: $mainColor;
             }
         }
         h3{
@@ -27,5 +28,11 @@
     &-children{
         margin: 2px;
         
+    }
+}
+.bg{
+    &-arrow{
+        background: rgb(207, 196, 196);
+
     }
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { BsBookmark, BsBookmarkCheck, BsStarHalf } from 'react-icons/bs'
 import './trader_card.scss';
 import {service_card_data} from '../../dummyData'
+import { Link } from 'react-router-dom';
 
 // interface card {
 //     photo:any,
@@ -11,13 +12,14 @@ import {service_card_data} from '../../dummyData'
 //     rating:number,
 //     views:number
 // }
-const Trader_card = ({photo, name, service, price, rating, views, }:any) => {
+const Trader_card = ({photo, name, service, price, rating, views, id}:any) => {
     const [markbook, setMarkbook] = useState(true)
   return (
     <div className='trader_card'>
-        <div className="trader_card-details">
+        <Link to={`/service-detail/:${id}`} className="trader_card-details">
             <div className="trader_card-details-photo">
                 <img src={photo} alt="trader" />
+                {}
             </div>
             <div className="trader_card-details-desc">
                 <span className='trader_card-details-desc-name'>{name}</span>
@@ -27,7 +29,7 @@ const Trader_card = ({photo, name, service, price, rating, views, }:any) => {
                     <BsStarHalf/> {rating} | {views}views
                 </span>
             </div>
-        </div>
+        </Link>
         <div className="trader_card-icons" onClick={()=> setMarkbook(prev => !prev)}>
             {markbook ? <BsBookmark/>
             : <BsBookmarkCheck/>}

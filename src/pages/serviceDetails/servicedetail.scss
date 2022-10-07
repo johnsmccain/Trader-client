@@ -1,0 +1,37 @@
+@import '../../styles/variable';
+.servicedetail{
+    margin-top: -70px;
+    position: relative;
+    &-desc{
+        padding: 20px 15px;
+        &-service{
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+        &-wrapper{
+           
+            display: flex;
+            align-items: center;
+            
+            
+
+        }
+       
+        &-line{
+            // color: $mainColor;
+            background: $mainColor;
+            opacity: .2;
+        }
+    }
+    .footer{
+        display: flex;
+        height: 70px;
+        justify-content: space-evenly;
+        position: sticky;
+        bottom: 0;
+        align-items: center;
+        background: #fff;
+        // padding: 20px 0;
+        
+    }
+}

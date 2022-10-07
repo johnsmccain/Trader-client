@@ -1,32 +1,58 @@
-import React, { useRef } from 'react';
-import { BsApple, BsFacebook, BsGoogle, BsLock, BsMailbox } from 'react-icons/bs';
+import React, { useRef, useState } from 'react';
+import { BsApple, BsCalendarDate, BsFacebook, BsGoogle, BsLock, BsLockFill, BsMailbox, BsPerson } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import Btn from '../button/Btn';
+import FormInput from '../form/FormInput';
 import INPUT from '../input/INPUT';
 import './singInOut.scss';
-const SignInOut = (props:any) => {
-    const Email = useRef()
-    const Password = useRef()
-    const IsRemembered = useRef()
-    const link = props.type.split(" ").join("")
-    // console.log(link)
-    const handleChange= (data:any) =>{
-        switch (data.type) {
-            case "email":
-                Email.current = data.value
-                break;
-                
-            case "password":
-                Password.current = data.value
-                break;
-        
-            default:
-                IsRemembered.current = data.checked
-                break;
-        }
+import { inputOptions } from './utils';
+type eve = {
+    target: {
+        name: any;
+        value: (String | Number | Object | Array<{}>);
     }
-  return (
-    <div className='signinout'>
+}
+
+const SignInOut = (props:any) => {
+    const [values, setValues] = useState({
+        username: "",
+        email: "",
+        birthday: "",
+        password: "",
+        confirmPassword: ""
+    });
+    const IsRemembered = useRef();
+
+    const link = props.type.split(" ").join("")
+
+    const onChange = (e:eve) => {
+        
+        setValues({...values, [e.target.name]: e.target.value})
+        
+    }
+    const handleSubmit = (e:any) => {
+        e.preventDefault()
+    }
+    // const handleChange= (data:any) =>{
+        //     switch (data.type) {
+            //         case "email":
+            //             Email.current = data.value
+            //             break;
+            
+            //         case "password":
+            //             Password.current = data.value
+            //             break;
+            
+            //         default:
+            //             IsRemembered.current = data.checked
+            //             break;
+            //     }
+            // }
+            // console.log(values["username"])
+            // console.log(values)
+            const icons = [<BsPerson/>,<BsMailbox/>, <BsCalendarDate/>, <BsLock/>, <BsLockFill/>]
+            return (
+                <div className='signinout'>
         <h2 >
             {
                 props.type === "Sign up"
@@ -34,7 +60,7 @@ const SignInOut = (props:any) => {
                 : "Login your Account"
             }
         </h2>
-        <form className='signinout-form' onSubmit={(event) => {
+        {/* <form className='signinout-form' onSubmit={(event) => {
             event?.preventDefault()
             console.log(Email.current)
             console.log(Password.current)
@@ -44,8 +70,23 @@ const SignInOut = (props:any) => {
             <INPUT placeholder='Email' handleChange={handleChange}  type="email" required startIcon={<BsMailbox/>}/>
             <INPUT placeholder='Password' handleChange={handleChange}   type="password" required startIcon={<BsLock/>}/>
             <INPUT  type="checkbox" handleChange={handleChange}  required={false} label='Remember me'/>
+            
+
+        </form> */}
+
+        <form  className="signinout-form" onSubmit={handleSubmit}>
+            {inputOptions(values, props.type).map(option => (
+                <FormInput
+                key={option.id}
+                {...option}
+                onChange={onChange}
+                label={icons[option.id - 1]}
+                value={values[option.name]}
+                />
+            ))}
             <Btn text={props.type} width="100" color='primary' variant="contained"/>
-        </form>
+         </form>
+
         {props.type !== "Sign up" && <a href=''>Forget the password?</a>}
         <div className="signinout-icons">
             <p>{props.type !== "Sign up" ? "or continue with" : 'or'}</p>
@@ -65,10 +106,11 @@ const SignInOut = (props:any) => {
         </div>
         {
             props.type === "Sign up"
-            ?<p className="signinout-footer">Already have an acount? <Link to="/auth/signin">Sign in</Link></p>
-            :<p className="signinout-footer">Don't have an acount? <Link to="/auth/signup">Sign up</Link></p>
+            ?<p className="signinout-footer">Already have an acount? <Link to="/auth/login">Sign in</Link></p>
+            :<p className="signinout-footer">Don't have an acount? <Link to="/auth/register">Sign up</Link></p>
         }
         
+         
     </div>
   )
 }

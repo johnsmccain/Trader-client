@@ -1,0 +1,39 @@
+@import '../../styles/variable';
+.cta{
+    height: 50px;
+    // background: #000;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    font-weight: 600;
+    .btn{
+        margin: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 30px;
+        border-radius: 50px;
+        cursor: pointer;
+        
+    }
+    .left{
+        color: $mainColor;
+        background:  rgb(230, 191, 235);
+        
+        &:hover{
+            background: $mainColor ;
+            color:  rgb(230, 191, 235);
+            font-weight: 700;
+        }
+    }
+    .right{
+        color: #fff;
+        background: $mainColor;
+        
+        &:hover{
+            background: rgb(230, 191, 235);
+            color: $mainColor;
+            font-weight: 700;
+        }
+    }
+}

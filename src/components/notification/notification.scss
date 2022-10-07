@@ -1,0 +1,35 @@
+@import "../../styles/variable";
+.notification{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 5px ;
+    margin:  30px 10px;
+    cursor: pointer;
+    &__icon{
+        background: $mainColor;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        .icon{
+            color: #fff;
+            font-size: 13px;
+        }
+    }
+    &__info{
+        .title{
+            font-size: 16px;
+            padding: 2px 0;
+        }
+        .text{
+            font-size: 12px;
+            font-weight: 300;
+            color: $grey;
+            padding: 2px 0;
+        }
+    }
+
+}

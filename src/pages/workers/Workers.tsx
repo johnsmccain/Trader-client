@@ -14,7 +14,7 @@ const Workers = () => {
             </ul>
         </div>
         {
-            service_card_data.map(data => <Trader_card key={data.id} photo={data.photo} name={data.name} service={data.service} price={data.price} rating={data.rating} views={data.views} />)
+            service_card_data.map(data => <Trader_card key={data.id} id={data.id} photo={data.photo} name={data.name} service={data.service} price={data.price} rating={data.rating} views={data.views} />)
             
         }
     </div>

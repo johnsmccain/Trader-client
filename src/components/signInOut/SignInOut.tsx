@@ -76,13 +76,15 @@ const SignInOut = (props:any) => {
 
         <form  className="signinout-form" onSubmit={handleSubmit}>
             {inputOptions(values, props.type).map(option => (
+                
                 <FormInput
                 key={option.id}
                 {...option}
                 onChange={onChange}
                 label={icons[option.id - 1]}
-                value={values[option.name]}
+                // value={}
                 />
+                
             ))}
             <Btn text={props.type} width="100" color='primary' variant="contained"/>
          </form>

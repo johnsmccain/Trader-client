@@ -1,0 +1,65 @@
+@import '../../styles/variable';
+
+@import '../../styles/variable';
+.auth{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    text-align: center;
+    padding: 10px;
+    h2{
+        font-size: $intro_h2;
+        margin-top: 110px;
+        
+    }
+    &-form{
+        margin: 40px 0;
+    }
+    &-icons{
+        &_icon{
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px 0;
+        }
+    }
+    &-footer{
+        margin-bottom: 20px;
+    }
+}
+.social{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding:0  10px;
+    &-top{
+        
+    }
+   
+    &-bottom{
+        // margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100vh;
+        text-align: center;
+        h2{
+            font-size: $intro_h2;
+        }
+        a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                margin-right: 10px;
+                
+            
+            }
+        }
+
+    }
+
+}
+

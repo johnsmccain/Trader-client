@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCommentDots, faDotCircle, faHeart, faMessage, faStar } from '@fortawesome/free-solid-svg-icons'
 import Btn from '../../button/Btn';
 import Comment from './comment/Comment';
-const Comments = () => {
+const Comments = (props:any) => {
   return (
     <div className='comment'>
            

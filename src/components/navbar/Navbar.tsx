@@ -13,25 +13,25 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="bookmark" className="link">
+          <Link to="/bookmark" className="link">
             <BsBookmarkDashFill/>
             <h4>Bookmark</h4>
           </Link>
         </li>
         <li>
-          <Link to="calender" className="link">
+          <Link to="/calender" className="link">
             <BsCalendar/>
             <h4>Calender</h4>
           </Link>
         </li>
         <li>
-          <Link to="inbox" className="link">
+          <Link to="/chat" className="link">
             <BsMessenger/>
             <h4>Inbox</h4>
           </Link>
         </li>
         <li>
-          <Link to="profile" className="link">
+          <Link to="/profile" className="link">
             <BsPerson/>
             <h4>Profile</h4>
           </Link>

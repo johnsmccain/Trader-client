@@ -1,0 +1,109 @@
+@import "../../styles/variable";
+.chat{
+    &-box{
+        display: grid;
+        // position: relative;
+        background: rgb(211, 193, 218);
+        grid-template-rows: 14vh 3fr 13vh;
+        height: 100%;
+    }
+    &-header{
+        padding: 1rem 1rem 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+    &-body{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1.5em;
+        overflow: scroll;
+        .message{
+            display: flex;
+            background: $mainColor;
+            border-radius: 1rem 1rem 1rem  0;
+            color: #fff;
+            padding: 0.7rem;
+            gap: .5rem;
+            max-width: 28rem;
+            width: fit-content;
+            flex-direction: column;
+            span:nth-child(2){
+                align-self: end;
+                color: $grey;
+                font-size: 0.7rem;
+            }
+        }
+        .own{
+            align-self: end;
+            background: linear-gradient(98.63deg, #24f046 0%, #4935f9 100%);
+            border-radius: 1rem 1rem 0 1rem;
+        }
+    }
+    &-sender{
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        background: #fff;
+        height: 3.5rem;
+        align-self: end;
+        border-radius: 1rem;
+        padding: 0.8rem;
+        // position: fixed;
+        // bottom: 0;
+        // left: 0;
+        // right: 0;
+        // gap: 1rem;
+        &>input{
+            height: 70%;
+            background-color: rgb(236, 236, 236);
+            border-radius: 0.5rem;
+            border: none;
+            outline: none;
+            flex  :1 ;
+            font-size: 14px;
+            padding: 0px 15px 0px 15px;
+        }
+        // .react-input-emoji--input{
+        //     padding: 10px 0 !important;
+        //     max-width: fit-content !important;
+        //     height: 70%;
+        //     background-color: rgb(236, 236, 236);
+        // }
+       
+        &>div{
+            
+            &:nth-child(1){
+            background: rgb(233,233,233);
+            border-radius: .5rem;
+            height: 70%;
+            padding: 0 15px 0 15px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &:hover{
+                color: #24f046;
+            }
+            }
+            &:last-child{
+                padding: 10px;
+                background: $mainColor;
+                color: #fff;
+                border-radius: .5rem;
+                &:hover{
+                    background: rgba($mainColor, 0.2);
+                    color: #0a831e,;
+                }
+            }
+        }
+    }
+}
+// .react-input-emoji--container {
+//     margin: 0 !important;
+// }
+// .react-input-emoji--button{
+//     padding: 0 !important;
+//     margin: 0 10px !important;
+// }

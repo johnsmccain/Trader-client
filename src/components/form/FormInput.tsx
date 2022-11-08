@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import "./formInput.scss";
+import "./form.scss";
 const FormInput = (props:any) => {
-  const [focused, setFocused] = useState(true)
-  const {label, errorMessage, onChange, id, ...inputProps} = props;
+  const [focused, setFocused] = useState(false)
+  const {label, errorMessage, onChange, ...inputProps} = props;
 
   const handleFocus = (e:Object) =>{
     setFocused(true);
@@ -20,9 +20,11 @@ const FormInput = (props:any) => {
           onFocus={()=> inputProps.name === "confirmPassword" && setFocused(true) }
           {...inputProps}
           focused={focused.toString()}
+          autoComplete='off'
+
           />  
-      </div>
         <span >{errorMessage}</span>
+      </div>
     </div>
   )
 }

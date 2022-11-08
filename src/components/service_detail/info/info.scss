@@ -44,5 +44,14 @@
         color: $mainColor;
         margin: 20px 0;
         font-size: 30px;
+        input{
+            width: 100px;
+            height: 30px;
+            margin-left: 10px;
+            border: none;
+            border-bottom: 1px solid $mainColor;
+            outline: none;
+            // background: #000;
+        }
     }
 }

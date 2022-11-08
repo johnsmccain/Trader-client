@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './slide.scss';
 import styled from 'styled-components';
+import { BsArrowLeft, BsArrowRight, BsPlusCircle } from 'react-icons/bs';
+import { BaseURI } from '../../../api';
 
 
 const Wrapper = styled.div`
@@ -8,11 +10,15 @@ const Wrapper = styled.div`
     transform: translateX(${(props:any) => props.slideIndex * -100}vw);
     width: 100vw;
 `
-const Slide = ({photo}:any) => {
-    
+const Slide = ({photo, handleChange}:any) => {
+//    console.log(photo)   
     const [index, setIndex] = useState(0);
-    let total = photo.length -1
-    
+    const [newPhoto, setNewPhoto] = useState();
+    const [photos, setPhotos] = useState(photo);
+    const story_pic = useRef();
+   
+        
+    let total = photos?.length -1
     const handleNext = (direction:any) =>{
         if (  direction === 'l'){
             setIndex((prev:number) => prev > 0 ? prev - 1 : total)
@@ -21,20 +27,40 @@ const Slide = ({photo}:any) => {
     
         } 
     }
+    // console.log(`${BaseURI}/images/${photo}`)
+    // console.log(`${photos}`)
 
+    // const handleChange = async (e:any) => {
+    //     // console.log(e.target.files[0])
+    //     console.log(e.target.files[0])
+    // }
     return (
         <div className="slide">
             <Wrapper slideIndex={index}>
 
                 {
-                    photo.map((img:any, i:any) => <img src={img} key={i} alt="profile" />)
+                    photos?.map((img:any, i:any) => <img src={`${BaseURI}/images/${img}`} key={i} alt="profile" />)
                 }
+                <img src={`${BaseURI}/images/${photo}`} alt="profile" />
+                <div className="slide-input">
+                    <label htmlFor="photo"><BsPlusCircle/></label>
+                    <input 
+                        type="file" 
+                        name="story" 
+                        accept='image/*' 
+                        id="photo" 
+                        // ref={story_pic}
+                        style={{display: "none"}}
+                        onChange={handleChange}
+                    />
+                </div>
             {/* <img src={photo[index]} alt="profile" /> */}
+                
             </Wrapper>
         
             <div className="slide-group-btn">
-                <button onClick={()=>handleNext("l")} className='slide-group-btn-prev'>{`<`}</button>
-                <button onClick={()=>handleNext("r")} className='slide-group-btn-next'>{`>`}</button>
+                <span onClick={()=>handleNext("l")} className='slide-group-btn-prev  btn'><BsArrowLeft/></span>
+                <span onClick={()=>handleNext("r")} className='slide-group-btn-next btn'><BsArrowRight/></span>
             </div>
         </div>
     )

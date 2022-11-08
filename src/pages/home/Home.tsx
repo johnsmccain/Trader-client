@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { Carousel, INPUT, NavBar, OfferCard, Services, Trader_card } from '../../components';
 import c1 from '../../assets/c1.png'
 import './home.scss';
@@ -8,37 +8,67 @@ import HomeWrapper from './wrapper/HomeWrapper';
 import { offer_data, profile_data, service_card_data, service_cat, service_cat2 } from '../../dummyData';
 import {faBroom, faBrush, faBuilding, faHandsWash, faPaintRoller, faPlug, faTools, faTruck} from "@fortawesome/free-solid-svg-icons"
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import {RootState} from '../../redux/store'
+import { BaseURI } from '../../api';
+import { getUsers } from '../../api/user';
 
 const icons =[faBroom, faBrush, faBuilding, faHandsWash, faPlug, faTools, faTruck, faPaintRoller];
-const Profile =  (
-  
-  <div className="home-profile">
+const Profile = ({user}:any) => {
 
-    <div className="home-profile_detail">
-      <img src={c1} alt="profile" className="home-profile_detail-pic" />
-      <div className="home-profile_detail-desc">
-        <span>Good Moring</span>
-        <h3>Andrew Ainsley</h3>
-      </div>
-    </div>
+  // console.log(`${BaseURI}images/${user?.picture}`)
+
+  
+  let time = new Date().getHours();
+  return (
+    <div className="home-profile">
+
+    { user ? <div className="home-profile_detail">
+      <img src={user?.picture ?`${BaseURI}images/${user?.picture}` : c1} alt="profile" className="home-profile_detail-pic" />
+      <Link to={`/service-detail/${user._id}`} className="home-profile_detail-desc">
+        <span>{`Good ${time >= 0 &&  time < 12  ? "mornig" : time >= 12 &&  time < 16 ? "Afternoon" : "Night" }`}</span>
+        <h3>{user.firstname}</h3>
+      </Link>
+    </div>: "LSTM"}
 
     <div className="home-profile-notification">
+    {user ? <>
       <Badge/>
-      <BsAlarm/>
+      <Link to="notifications">  
+        <BsAlarm/>
+      </Link>
       <BsBookmark/>
+     </>: <Link className='link' to="/auth/login">Login</Link>}
     </div>
   </div>
 )
+
+}
 
 
 
 const Home = () => {
 
+  const {user} = useSelector(state => state?.user)
+  // console.log(user, 'hello')
+  const [users, setUsers] = useState()
+
+  useEffect(() => {
+    const fetch = async ()=> {
+      const res = await getUsers();
+      setUsers(res.data);
+    }
+    fetch();
+    return () => {
+      
+    }
+  }, [])
+  // console.log(users)
   return ( 
     
       <div className='home' >
 
-        {Profile}
+        <Profile user={user?.details}/> 
         
         <div className="home-search">
           <INPUT startIcon={<BsSearch/>}/>
@@ -73,7 +103,20 @@ const Home = () => {
               </ul>
             </div>
             {
-              profile_data.map(data => <Trader_card key={data.id} photo={data.photo[data.id -1]} id={data.id} name={data.name} service={data.service} price={data.price} rating={data.rating} views={data.views} />)
+              users ?
+                users?.map((data:any, id:any) => 
+                  (<Trader_card 
+                    key={id}  
+                    photo={data.picture} 
+                    id={data._id} 
+                    name={data.firstname + " " + data.lastname} 
+                    service={data.service_name} 
+                    price={data.price} 
+                    // rating={data.rating} 
+                    // views={data.views}
+                  />))
+              : 
+                  "Loading"
               
             }
           </HomeWrapper>

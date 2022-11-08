@@ -5,6 +5,10 @@
     padding: 15px;
     border-radius: 20px 20px 0 0 ;
     background: rgba(226, 224, 224, 0.911);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     ul{
         display: flex;
         justify-content: space-between;

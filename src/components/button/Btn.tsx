@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const Btn = ({color, variant, width, text, required, linktopassword}:any) => {
+const Btn = ({color, variant, width, text, required, linktopassword, loading}:any) => {
   const styles = {width: `${width}%`, borderRadius: 5, padding: '12px 0', fontSize: 'capitalize', cursor: "pointer" }
   return (
     <Button 
@@ -12,6 +12,7 @@ const Btn = ({color, variant, width, text, required, linktopassword}:any) => {
       color={color} 
       variant={variant} 
       sx={styles} 
+      disabled={loading}
       
     >
       { linktopassword &&<Link to={linktopassword}>

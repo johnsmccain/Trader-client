@@ -1,0 +1,84 @@
+@import "../../styles/variable";
+.profile{
+    // height: 100vh;
+    // background: #000;
+    padding: 0;
+    margin: 30px 0;
+    margin-bottom: 60px;
+    position: relative;
+    &__header{
+        // height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom:  1px solid rgba(black, 0.1);
+        box-shadow: px 1px rgba(black, 0.1);
+        padding-bottom: 20px;
+        &-img{
+            height: max-content;
+            width: max-content;
+            position: relative;
+            img{
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            input{
+                display: none;
+            }
+            label{
+                position: absolute;
+                left: 90px;
+                bottom: 10px;
+                background: $mainColor;
+                padding: 3px;
+                border-radius: 5px;
+                svg{
+                    color: #fff;
+                }
+            }
+        }
+        &-info{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            b{
+                font-size: 22px;
+                margin: 3px 0;
+            }
+            span{
+                font-size: 14px;
+            }
+        }
+    }
+    &__options{
+        // height: 100%;
+        // background: #000;
+        // overflow: scroll;
+        &-list{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px ;
+            div{
+                display: flex;
+                align-items: center;
+            }
+            &:hover{
+                border-bottom: 1px solid rgba($mainColor, .1);
+                &-icon{
+                    background: #f00;
+                }
+            }
+            &-icon{
+                margin-right: 20px;
+                svg{
+                    font-size: 25px;
+                }
+            }
+        }
+    }
+}

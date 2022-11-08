@@ -1,12 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './cta.scss';
-const Cta = ({left, right}:any) => {
+const Cta = ({left, leftpath, right}:any) => {
   return (
     <div className="cta">
 
-        <span className="left btn">
+        <Link to={leftpath} className="left btn">
             {left}
-        </span>
+        </Link>
         <span className="right btn"> {right}</span>
     </div>
   )

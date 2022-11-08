@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getUsers } from '../../api/user';
 import { Trader_card } from '../../components';
 import { service_card_data, service_cat } from '../../dummyData';
 import './workers.scss';
 const Workers = () => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetch = async () => {
+      const res = await getUsers();
+      setUsers(res.data);
+    }
+    fetch()
+    return () => {
+    }
+  }, [])
+  console.log(users[1]?._id)
   return (
     <div className='workers'>
         <div className="home_service-option">
@@ -14,8 +26,18 @@ const Workers = () => {
             </ul>
         </div>
         {
-            service_card_data.map(data => <Trader_card key={data.id} id={data.id} photo={data.photo} name={data.name} service={data.service} price={data.price} rating={data.rating} views={data.views} />)
-            
+          users?.map((data, id)=> (
+            <Trader_card 
+              key={id} 
+              id={data?._id} 
+              photo={data?.picture} 
+              name={`${data?.firstname} ${data?.lastname}`} 
+              service={data?.service_name} 
+              price={data?.price} 
+              rating={data?.rating} 
+              views={data?.views} 
+            />
+          ))   
         }
     </div>
   )

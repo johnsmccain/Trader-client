@@ -1,0 +1,58 @@
+@import "../../../styles/variable";
+.profile{
+    margin: 0;
+    padding: 20px;
+    // height: 100vh;
+    &-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        // background: #000;
+        textarea{
+            // background: ;
+            min-height: 200px;
+            padding: 20px;
+            margin: 20px 0;
+
+        }
+        
+        &-pic{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &-wrapper{
+                // width: 200px;
+                // background: #000;
+                // border-radius: 50%;
+                // overflow: hidden;
+                // height: 200px;
+                position: relative;
+                input{
+                    display: none;
+                }
+                label{
+                    position: absolute;
+                    left: 90px;
+                    bottom: 10px;
+                    background: $mainColor;
+                    padding: 3px;
+                    border-radius: 5px;
+                    svg{
+                        color: #fff;
+                    }
+                }
+                img{
+                //    height: 100%;
+                   width: 100%;
+                    object-fit:cover;
+                    border-radius: 50%;
+                    height: 100px;
+                    width: 100px;
+
+                    // display: none;
+                }
+            }
+        }
+    }
+}

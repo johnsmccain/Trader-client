@@ -12,7 +12,9 @@
             align-items: center;
             img{
                 width: 40px;
+                height: 40px;
                 border-radius: 50%;
+                object-fit: cover;
             }
             &-desc{
                 padding-left: 10px;

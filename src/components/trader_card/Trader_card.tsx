@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { BsBookmark, BsBookmarkCheck, BsStarHalf } from 'react-icons/bs'
+import { BsBookmark, BsBookmarkCheck, BsFillBookmarkCheckFill, BsStarHalf } from 'react-icons/bs'
 import './trader_card.scss';
 import {service_card_data} from '../../dummyData'
 import { Link } from 'react-router-dom';
-
+import { BaseURI } from '../../api';
+import brand from '../../assets/brand.png';
 // interface card {
 //     photo:any,
 //     name:string, 
@@ -14,11 +15,20 @@ import { Link } from 'react-router-dom';
 // }
 const Trader_card = ({photo, name, service, price, rating, views, id}:any) => {
     const [markbook, setMarkbook] = useState(true)
+    // console.log(`${BaseURI}/images/${photo}`)
+    console.log(id)
+    
   return (
     <div className='trader_card'>
-        <Link to={`/service-detail/:${id}`} className="trader_card-details">
+        <Link to={`/service-detail/${id}`} className="trader_card-details">
             <div className="trader_card-details-photo">
-                <img src={photo} alt="trader" />
+                <img alt="trader" src={
+                    photo ?
+                        `${BaseURI}/images/${photo}`
+                    :
+                        brand
+                    } 
+                />
                 {}
             </div>
             <div className="trader_card-details-desc">
@@ -32,7 +42,7 @@ const Trader_card = ({photo, name, service, price, rating, views, id}:any) => {
         </Link>
         <div className="trader_card-icons" onClick={()=> setMarkbook(prev => !prev)}>
             {markbook ? <BsBookmark/>
-            : <BsBookmarkCheck/>}
+            : <BsFillBookmarkCheckFill/>}
         </div>
     </div>
   )

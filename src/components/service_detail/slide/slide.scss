@@ -1,11 +1,14 @@
 @import '../../../styles/variable';
+@import "../../../styles/mixin";
 .slide{
     display: flex;
     // overflow-x: scroll;
     width: 100%;
-    height: 300px;
     position: relative;
     overflow-x: hidden;
+    @include mobile{
+        height: 300px;
+    }
     &-input{
         width: 100%;
         display: flex;
@@ -26,9 +29,13 @@
     }
     img{
         width:100vw;
-        // min-width: 320px;
+        min-width: 320px;
         height: 100%;
         object-fit: cover;
+        @media screen and (min-width: 500px) {
+            object-fit: contain;
+            height: 570px;
+        }
     }
     &-group-btn{
         position: absolute;

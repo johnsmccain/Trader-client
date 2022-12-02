@@ -1,10 +1,14 @@
+import { useSelect } from '@mui/base';
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { getUsers } from '../../api/user';
 import { Trader_card } from '../../components';
 import { service_card_data, service_cat } from '../../dummyData';
 import './workers.scss';
 const Workers = () => {
   const [users, setUsers] = useState([]);
+  const userId = useSelector(data => data?.user.user.details._id);
+  console.log(userId)
   useEffect(() => {
     const fetch = async () => {
       const res = await getUsers();
@@ -14,7 +18,7 @@ const Workers = () => {
     return () => {
     }
   }, [])
-  console.log(users[1]?._id)
+  // console.log(users[1]?._id)
   return (
     <div className='workers'>
         <div className="home_service-option">
@@ -26,7 +30,7 @@ const Workers = () => {
             </ul>
         </div>
         {
-          users?.map((data, id)=> (
+          users?.filter(user => user?._id !== userId)?.map((data, id)=> (
             <Trader_card 
               key={id} 
               id={data?._id} 

@@ -16,7 +16,6 @@ import brand from '../../assets/brand.png';
 const Trader_card = ({photo, name, service, price, rating, views, id}:any) => {
     const [markbook, setMarkbook] = useState(true)
     // console.log(`${BaseURI}/images/${photo}`)
-    console.log(id)
     
   return (
     <div className='trader_card'>

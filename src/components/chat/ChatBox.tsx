@@ -8,62 +8,62 @@ import { useSelector } from 'react-redux';
 import { getUser } from '../../api/user';
 import { getMessage, addMessage } from '../../api/message';
 import {format} from 'timeago.js' 
+import EmojiPicker from "emoji-picker-react"
 
 const ChatBox = ({chat ,currentUser, setsendMessage, receivedMessage}:any) => {
+
+  // console.log(chat)
+  // console.log(currentUser)
+  // console.log(receivedMessage)
+
   const imageRef = useRef();
   const scrollRef = useRef();
   const [newMessage, setnewMessage] = useState("")
   const [messages, setMessages] = useState([])
   const [workerDetails, setworkerDetails] = useState()
+  const [isEmoji, setIsEmoji] = useState(false)
   const userId = useSelector(e => e.user.user.details._id);
-  // console.log(userId)
+  // console.log(userId, currentUser)
   const worker = useParams()
   const handleChange = (e:any) => {
     // e.preventDefault();
-    setnewMessage(e);
+    if (e?.target){
+      setnewMessage( e.target.value);
+    }else{
+      setnewMessage((prev)=> prev + e?.emoji)
+    }
   }
-  // let timer = 0;
-  // setInterval(()=>{
-  //   timer += 1
-  // },1000);
-  // console.log(chat)
+  console.log(newMessage);
   // Fetch data for header
   useEffect(() => {
     const fetch = async () => {
-      if (worker.id){
-        const res = await getUser(worker?.id);
-        setworkerDetails(res.data)
-      }else{
-        {
-          const res = await getUser(currentUser);
+
+      const chatId = chat?.members?.find((c:any) => c !== userId )
+      console.log(chatId)
+          const res = await getUser(chatId);
           setworkerDetails(res.data)
-        }
-      }
+      //   
+      
     }
     if (chat) fetch();
   }, [chat, currentUser]);
+
 
   // Fetch Messages
   useEffect(() => {
     const getMessages =async () => {
       const res = await getMessage(chat?._id);
       setMessages(res.data);
-      // console.log(res)
     }
     if (chat !== null) getMessages();
   }, [chat])
   
   // Receive message from Parent component
-
   useEffect(() => {
     setMessages((prev:any )=> [...prev, receivedMessage])
-    // console.log(receivedMessage)
   }, [receivedMessage])
   
-  // console.log(chat)
-  // console.log()
-  // console.log(newMessage)
-// timeago//
+
   // send message
   const handleSend = async(e:any) => {
     e.preventDefault();
@@ -72,24 +72,25 @@ const ChatBox = ({chat ,currentUser, setsendMessage, receivedMessage}:any) => {
       text: newMessage,
       chatId: chat?._id
     }
-    // console.log(message)
-    // console.log(chat?.members)
-    const rcId =  chat?.members.filter((id:any )=> id !== userId)
+
+    // filtering receiver id from users
+    const rcId =  chat?.members.filter((id:any )=> id !== userId);
+
     //  send to sokect server
     setsendMessage({...message, receiverId:rcId[0]});
+
     //  send to database
     try {
       const {data} =  await addMessage(message)
-      console.log(data)
       setMessages([...messages, data])
       setnewMessage("");
     } catch (error) {
       console.log(error)
     }
 
-
+    // setnewMessage('');
   }
-// console.log(messages[0]?.userId)
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({behavior: "smooth"})
   }, [messages])
@@ -114,7 +115,7 @@ const ChatBox = ({chat ,currentUser, setsendMessage, receivedMessage}:any) => {
       </div>
 
       {/* chat body */}
-      <div className="chat-body">
+      <div className="chat-body" onClick={() => setIsEmoji(false)} >
         {messages.map((m, id) => (
           
             <div
@@ -126,18 +127,35 @@ const ChatBox = ({chat ,currentUser, setsendMessage, receivedMessage}:any) => {
             </div>
           
         ))}
+        <div className={`emoji ${!isEmoji && "hide"}`}>
+            <EmojiPicker
+              width="100%"
+              height={700}
+              onEmojiClick={handleChange}
+              />
+          </div>
       </div>
 
       {/* chat sender */}
       <div className="chat-sender">
         <div onClick={() => imageRef?.current?.click()}>+</div>
-        <InputEmoji className="input" onChange={handleChange} value={newMessage}/>
+        {/* <InputEmoji className="input" onChange={handleChange} value={newMessage}/> */}
+        <div>
+          
+          <textarea 
+            name="chat" 
+            id="chat"
+            onChange={handleChange}
+            value={newMessage}
+          />
+        </div>
+        <div className='icon'  onClick={() => setIsEmoji(!isEmoji)}>EM</div>
         <input
           type="file" name="" id=""
           style={{ display: "none" }}
           ref={imageRef}
         />
-        <div className="send-btn btn" onClick={handleSend}>Send </div>
+        <div className="send-btn btn" onClick={handleSend}>Send</div>
       </div>
     </div>
   )

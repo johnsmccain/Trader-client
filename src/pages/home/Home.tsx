@@ -11,23 +11,32 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {RootState} from '../../redux/store'
 import { BaseURI } from '../../api';
-import { getUsers } from '../../api/user';
+import { getUser, getUsers } from '../../api/user';
 
 const icons =[faBroom, faBrush, faBuilding, faHandsWash, faPlug, faTools, faTruck, faPaintRoller];
 const Profile = ({user}:any) => {
 
-  // console.log(`${BaseURI}images/${user?.picture}`)
-
+  console.log(`${BaseURI}images/${user?.picture}`)
+  console.log(user?._id)
+  const [user_detail, setuser_detail] = useState()
+  useEffect(() => {
+    const fetch_data = async () => {
+      const res = await getUser(user?._id);
+      setuser_detail(res.data);
+    }
+    fetch_data();
+  }, [user?._id])
+  
   
   let time = new Date().getHours();
   return (
     <div className="home-profile">
 
     { user ? <div className="home-profile_detail">
-      <img src={user?.picture ?`${BaseURI}images/${user?.picture}` : c1} alt="profile" className="home-profile_detail-pic" />
+      <img src={user_detail?.picture ?`${BaseURI}images/${user_detail?.picture}` : c1} alt="profile" className="home-profile_detail-pic" />
       <Link to={`/service-detail/${user._id}`} className="home-profile_detail-desc">
         <span>{`Good ${time >= 0 &&  time < 12  ? "mornig" : time >= 12 &&  time < 16 ? "Afternoon" : "Night" }`}</span>
-        <h3>{user.firstname}</h3>
+        <h3>{user_detail?.firstname} {user_detail?.lastname}</h3>
       </Link>
     </div>: "LSTM"}
 
@@ -50,7 +59,7 @@ const Profile = ({user}:any) => {
 const Home = () => {
 
   const {user} = useSelector(state => state?.user)
-  // console.log(user, 'hello')
+  const userId = user?.details?._id;
   const [users, setUsers] = useState()
 
   useEffect(() => {
@@ -59,11 +68,12 @@ const Home = () => {
       setUsers(res.data);
     }
     fetch();
+
     return () => {
       
     }
   }, [])
-  // console.log(users)
+
   return ( 
     
       <div className='home' >
@@ -104,7 +114,7 @@ const Home = () => {
             </div>
             {
               users ?
-                users?.map((data:any, id:any) => 
+                users?.filter(user => user?._id !== userId)?.map((data:any, id:any) => 
                   (<Trader_card 
                     key={id}  
                     photo={data.picture} 

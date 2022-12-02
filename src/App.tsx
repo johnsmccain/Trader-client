@@ -5,7 +5,7 @@ import './App.scss';
 import { ChatBox, Splashx } from './components';
 import FormInput from './components/form/FormInput';
 import Wrapper from './components/wrapper/Wrapper';
-import {Home, SocialAuth, SignUp, ProfileForm, Offers, Services, Notifications, Bookmark, Search, Profile, Chat} from './pages';
+import {Home, SocialAuth, SignUp, ProfileForm, Offers, Services, Notifications, Bookmark, Search, Profile, Chat, Booking} from './pages';
 import ServiceDetail from './pages/service/serviceDetails/ServiceDetail';
 import SignIn from './pages/auth/signIn/SignIn';
 import Workers from './pages/workers/Workers';
@@ -18,7 +18,7 @@ import Calender from './pages/calender/Calender';
 function App() {
 
 const [start_time, setStart_time] = useState(false)
-const {user} = useSelector(selector => selector.user);
+const {user} = useSelector((selector:any )=> selector.user);
   const dispatch = useDispatch()
 setTimeout(() => {
   if(!start_time){
@@ -31,14 +31,11 @@ setTimeout(() => {
   useEffect(() => {
     try {
       dispatch(authStart());
-      dispatch(authSuccess(JSON.parse(localStorage.getItem("user_details"))))
+      dispatch(authSuccess(JSON.parse(localStorage.getItem("user_details") || "")))
     } catch (error) {
-      
+      console.log(error);
     }
-  
-    return () => {
-      
-    }
+
   }, [])
   
 
@@ -66,6 +63,7 @@ setTimeout(() => {
           <Route path='/calender' element={user ?<Calender/>: <SignIn/>}/>
           <Route path='/notification' element={user ?<Wrapper header="Notification" bg='bg'><NotificationSettings/></Wrapper> : <SignIn/>}/>
           <Route path='/bookmark' element={user ?<Wrapper header="My Bookmark" bg="bg"><Bookmark/></Wrapper> : <SignIn/>}/>
+          <Route path='/booking' element={user ?<Wrapper header="Booking" bg="bg"><Booking/></Wrapper> : <SignIn/>}/>
           <Route path='/search' element={user ?<Search/> : <SignIn/>}/>
           <Route path={`/profile/${user?.details?._id}`} element={user ? <ProfileForm/> : <SignIn/>}/>
           <Route path={`/profile`} element={user ? <Wrapper header="Profile" bg="bg"><Profile/></Wrapper> : <SignIn/>}/>

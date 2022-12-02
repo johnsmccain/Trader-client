@@ -9,5 +9,6 @@ export {default as Services} from "./service/service-cat_list/SeviceCatList"
 export {default as Chat} from "./chat/Chat"
 export {default as Notifications} from "./notification/Notifications"
 export {default as Bookmark} from "./bookmark/Bookmark"
-export {default as Search} from "./search/Search"
+export {default as Search} from "./search/Search";
+export {default as Booking} from "./booking/Booking";
 

@@ -14,10 +14,10 @@ import { upload } from '../../../api/upload';
 import ServiceForm from '../serviceForm/ServiceForm';
 
 const ServiceDetail = () => {
-    const params = useParams()
-    let id:any = params.id?.slice(0,)
+    const {id} = useParams()
+    
     // const data = profile_data[id - 1];
-    const {user} = useSelector(el => el?.user);
+    const {user} = useSelector((el:any) => el?.user);
     const [userDetails, setUserDetails]:any = useState();
     const [isLoading, setIsLoading]:any = useState(false);
     const [isEditMode, setIsEditMode]:any = useState(false);
@@ -32,6 +32,8 @@ const ServiceDetail = () => {
       price: 20,
       gallery: ""
     });
+
+    // console.log()
     useEffect(() => {
       
       const fetch_user = async () => {
@@ -60,11 +62,10 @@ const ServiceDetail = () => {
     
     const isOwner = userId === current_userId;
     const handleXBTN = () => setIsEditMode((prev:any) => !prev)
-console.log(userDetails?.data)
-  return (
-    
-      <div className='servicedetail' onSubmit={handleSubmit}>
-          <Slide photo={userDetails?.data?.story} isOwner={isOwner} handleChange={handelChange}/>
+
+
+    const Detail = (<>
+          <Slide data={userDetails} photo={userDetails?.data?.story} isOwner={isOwner} handleChange={handelChange}/>
           <b onClick={handleXBTN}><BsPen/></b>
           <div className="servicedetail-desc">
               <Info data={userDetails?.data} isOwner={isOwner} handleChange={handelChange}/>
@@ -75,15 +76,26 @@ console.log(userDetails?.data)
               </div>
               <div className="servicedetail-desc-icon"></div>
           </div>
-          {isEditMode && <ServiceForm handleXBTN={handleXBTN} currentUserId={current_userId}/>}
-          <div className="footer">
-                <Cta 
-                  left="Message"  
-                  right="Book Now" 
-                  leftpath={`/chat/${id}`}
-                  rightpath="Book Now" 
-                />
-          </div>
+          {isEditMode && (id === user?.details?._id) && <ServiceForm handleXBTN={handleXBTN} currentUserId={current_userId}/>}
+          {
+            id !== user?.details?._id
+              ? (<div className="footer">
+                  <Cta 
+                    left="Message"  
+                    right="Book Now" 
+                    leftpath={`/chat/${id}`}
+                    rightpath="Book Now" 
+                  />
+                </div>)
+              : ""
+            }
+        </>)
+    return (
+    
+      <div className='servicedetail' onSubmit={handleSubmit}>
+
+        {Detail}
+        
 
       </div>
   )

@@ -22,21 +22,18 @@ const ServiceForm = ({handleXBTN, currentUserId}:any) => {
     gallery:"",
     price:NaN
   });
-  console.log(typeof(userData.price))
-    useEffect(() => {
+
+  useEffect(() => {
       // first
       setUserData({...userData, price:32})
       const user_fullname =async () => {
         const res = await (await getUser(state.user.details._id)).data
-        console.log(res.lastname)
-        console.log(res.firstname)
+
         setUserData((prev) => ({...prev, fullname: `${res.firstname} ${res.lastname}`}))
 
       } 
       user_fullname()
-      return () => {
-        // second
-      }
+
     }, [])
     
   const handleChange = (e:any) => {
@@ -85,7 +82,6 @@ const ServiceForm = ({handleXBTN, currentUserId}:any) => {
         {...userData, ...user_file}
         , state.user.details._id
       )
-      console.log(res)
   }  
     
   return (

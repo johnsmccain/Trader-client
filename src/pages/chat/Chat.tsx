@@ -8,7 +8,7 @@ import {io} from "socket.io-client";
 import Conversation from '../../components/conversation/Conversation';
 import { createChat, userChats } from '../../api/chat';
 const Chat = () => {
-  const {id} = useParams()
+  const worker = useParams()
   // console.log(id)
 
   const socket = useRef();
@@ -23,10 +23,13 @@ const Chat = () => {
   const user_detail = useSelector(e => e.user.user.details);
   const userId = user_detail?._id;
 
-  if (id){
-    setChatUserId(id)
-  }
-// console.log(userId, chatUserId)
+  // getting user Id from params if available.
+  // useEffect(() => {
+  //   if (worker?.id) setChatUserId(worker?.id)
+  // }, [])
+  // console.log(chatUserId, currentChat)
+
+// // console.log(userId, chatUserId)
 // get chat into chat section
   useEffect(() => {
     const getChats =async () => {
@@ -37,11 +40,11 @@ const Chat = () => {
     getChats();
   }, [])
   
-    // setChatUserId()
+//     // setChatUserId()
     
-  useEffect(() => {
+//   useEffect(() => {
       
-    }, [])
+//     }, [])
     
     // Connect to Sockect.io
   useEffect(() => {
@@ -55,22 +58,23 @@ const Chat = () => {
         setOnlineUsers(users)
       })
     }, [user_detail])
-    // console.log(onlineUsers)
+//     // console.log(onlineUsers)
     // create chat into chat section
     useEffect(() => {
       const createChats = async () => {
         try {
           const res = await createChat({senderId: userId, receiverId: chatUserId});
           
-          if (userId && chatUserId) createChats();
+          console.log(res)
         } catch (error) {
           console.log(error)
         }
         
+        createChats();
         // console.log(res.data);
       }
-    }, [userId, chatUserId])
-    
+    }, [])
+    // console.log(userId, chatUserId)
     // Send message to Socket server
     useEffect(() => {
       if(sendMessage){
@@ -88,18 +92,7 @@ const Chat = () => {
     })
   }, [sendMessage])
   
-  // useEffect(() => {
-  //   const fetch = async () => {
-  //     // const res = await getUser(worker?.id);
-  //     const resArr = await getUsers();
-  //     // console.log(res)
-  //     // console.log(resArr)
 
-  //     // setworkerDetails(res?.data)
-  //   }
-  //   fetch();
-  // }, [])
-  
   
   return (
     <div className='chat'>
@@ -118,7 +111,7 @@ const Chat = () => {
                       } }>
                       <Conversation 
                         data={chat}
-                        currentUser={userId}
+                        currentUser={chatUserId}
                       />
                     </div>
                   ))

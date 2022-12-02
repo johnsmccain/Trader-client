@@ -2,7 +2,7 @@
 .chat{
     &-box{
         display: grid;
-        // position: relative;
+        position: relative;
         background: rgb(211, 193, 218);
         grid-template-rows: 14vh 3fr 13vh;
         height: 100%;
@@ -43,7 +43,7 @@
     &-sender{
         display: flex;
         align-items: center;
-        // justify-content: space-between;
+        justify-content: space-between;
         background: #fff;
         height: 3.5rem;
         align-self: end;
@@ -92,6 +92,7 @@
                 background: $mainColor;
                 color: #fff;
                 border-radius: .5rem;
+                cursor: pointer;
                 &:hover{
                     background: rgba($mainColor, 0.2);
                     color: #0a831e,;
@@ -99,6 +100,21 @@
             }
         }
     }
+    textarea{
+        width: 100%;
+    }
+    .emoji{
+        overflow-y: scroll;
+        max-height: 300px;
+        background: #000;
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        right: 0;
+    }
+}
+.hide {
+    display: none;
 }
 // .react-input-emoji--container {
 //     margin: 0 !important;
@@ -107,3 +123,6 @@
 //     padding: 0 !important;
 //     margin: 0 10px !important;
 // }
+.icon{
+    cursor: pointer;
+}
